@@ -46,6 +46,57 @@ describe("Update score", () => {
       async () => await recommendationService.upvote(1)
     ).rejects.toHaveProperty("type", "not_found");
   });
+
+  it("should downvote a recommendation", async () => {
+    const recommendationRepositoryUpdateScore = findUpdateScoreSpy();
+
+    await recommendationService.downvote(1);
+
+    expect(recommendationRepositoryUpdateScore).toBeCalledTimes(1);
+    expect(recommendationRepositoryUpdateScore).toBeCalledWith(1, "decrement");
+  });
+
+  it("should not downvote a not found recommendation", async () => {
+    findWithInvalidId();
+
+    expect(
+      async () => await recommendationService.downvote(1)
+    ).rejects.toHaveProperty("type", "not_found");
+  });
+
+  it("should remove a recommendation when ", async () => {
+    jest.spyOn(recommendationRepository, "find").mockResolvedValue({
+      ...recommendationFactory,
+      id: 1,
+      score: -6,
+    });
+
+    jest.spyOn(recommendationRepository, "updateScore").mockResolvedValue(null);
+
+    const recommendationRepositoryRemove = jest
+      .spyOn(recommendationRepository, "remove")
+      .mockResolvedValue(null);
+
+    await recommendationService.downvote(1);
+
+    expect(recommendationRepositoryRemove).toHaveBeenCalled();
+  });
+});
+
+describe("Get by id", () => {
+  it("should return a recommendation", async () => {
+    jest.spyOn(recommendationRepository, "find").mockResolvedValue({
+      ...recommendationFactory,
+      id: 1,
+      score: 0,
+    });
+
+    const recommendationFindById = async () => {
+      await recommendationService.getById(1);
+    };
+
+    expect(recommendationFindById).not.toBeNull();
+  });
 });
 
 function findUpdateScoreSpy() {
