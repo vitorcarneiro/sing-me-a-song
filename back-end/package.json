@@ -51,5 +51,8 @@
     "express-async-errors": "^3.1.1",
     "joi": "^17.4.1",
     "react-player": "^2.10.0"
-  }
+  },
+  "prisma": {
+  "seed": "ts-node prisma/seed.ts"
+}
 }
