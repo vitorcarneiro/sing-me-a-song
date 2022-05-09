@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/services/recommendationsService.ts</title>
+    <title>Code coverage report for src/controllers/recommendationController.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/services</a> recommendationsService.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/controllers</a> recommendationController.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">27.27% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>29/29</span>
+                <span class='fraction'>6/22</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">14.28% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>9/9</span>
+                <span class='fraction'>1/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">27.27% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>27/27</span>
+                <span class='fraction'>6/22</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -129,194 +129,137 @@
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
 <a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Recommendation } from "@prisma/client";
-import { recommendationRepository } from "../repositories/recommendationRepository.js";
-import { notFoundError } from "../utils/errorUtils.js";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Request, Response } from "express";
+import { recommendationSchema } from "../schemas/recommendationsSchemas.js";
+import { recommendationService } from "../services/recommendationsService.js";
+import { wrongSchemaError } from "../utils/errorUtils.js";
 &nbsp;
-export type CreateRecommendationData = Omit&lt;Recommendation, "id" | "score"&gt;;
-&nbsp;
-async function insert(createRecommendationData: CreateRecommendationData) {
-  await recommendationRepository.create(createRecommendationData);
-}
-&nbsp;
-async function upvote(id: number) {
-  const recommendation = await recommendationRepository.find(id);
-  if (!recommendation) throw notFoundError();
-&nbsp;
-  await recommendationRepository.updateScore(id, "increment");
-}
-&nbsp;
-async function downvote(id: number) {
-  const recommendation = await recommendationRepository.find(id);
-  if (!recommendation) throw notFoundError();
-&nbsp;
-  await recommendationRepository.updateScore(id, "decrement");
-&nbsp;
-  if (recommendation.score &lt; -5) {
-    await recommendationRepository.remove(id);
-  }
-}
-&nbsp;
-async function getById(id: number) {
-  return recommendationRepository.find(id);
-}
-&nbsp;
-async function get() {
-  return recommendationRepository.findAll();
-}
-&nbsp;
-async function getTop(amount: number) {
-  return recommendationRepository.getAmountByScore(amount);
-}
-&nbsp;
-async function getRandom() {
-  const random = Math.random();
-  const scoreFilter = getScoreFilter(random);
-&nbsp;
-  const recommendations = await getByScore(scoreFilter);
-  if (recommendations.length === 0) {
-    throw notFoundError();
+async function insert(req: Request, res: Response) {
+  const validation = recommendationSchema.validate(req.body);
+  if (validation.error) {
+    throw wrongSchemaError();
   }
 &nbsp;
-  const randomIndex = Math.floor(Math.random() * recommendations.length);
-  return recommendations[randomIndex];
+  await recommendationService.insert(req.body);
+&nbsp;
+  res.sendStatus(201);
 }
 &nbsp;
-async function getByScore(scoreFilter: "gt" | "lte") {
-  const recommendations = await recommendationRepository.findAll({
-    score: 10,
-    scoreFilter,
-  });
+async function <span class="fstat-no" title="function not covered" >upvote(</span>req: Request, res: Response) {
+  const { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
 &nbsp;
-  if (recommendations.length &gt; 0) {
-    return recommendations;
-  }
+<span class="cstat-no" title="statement not covered" >  await recommendationService.upvote(+id);</span>
 &nbsp;
-  return recommendationRepository.findAll();
+<span class="cstat-no" title="statement not covered" >  res.sendStatus(200);</span>
 }
 &nbsp;
-function getScoreFilter(random: number) {
-  if (random &lt; 0.7) {
-    return "gt";
-  }
+async function <span class="fstat-no" title="function not covered" >downvote(</span>req: Request, res: Response) {
+  const { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
 &nbsp;
-  return "lte";
+<span class="cstat-no" title="statement not covered" >  await recommendationService.downvote(+id);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  res.sendStatus(200);</span>
 }
 &nbsp;
-export const recommendationService = {
+async function <span class="fstat-no" title="function not covered" >random(</span>req: Request, res: Response) {
+  const randomRecommendation = <span class="cstat-no" title="statement not covered" >await recommendationService.getRandom();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  res.send(randomRecommendation);</span>
+}
+&nbsp;
+async function <span class="fstat-no" title="function not covered" >get(</span>req: Request, res: Response) {
+  const recommendations = <span class="cstat-no" title="statement not covered" >await recommendationService.get();</span>
+<span class="cstat-no" title="statement not covered" >  res.send(recommendations);</span>
+}
+&nbsp;
+async function <span class="fstat-no" title="function not covered" >getTop(</span>req: Request, res: Response) {
+  const { amount } = <span class="cstat-no" title="statement not covered" >req.params;</span>
+&nbsp;
+  const recommendations = <span class="cstat-no" title="statement not covered" >await recommendationService.getTop(+amount);</span>
+<span class="cstat-no" title="statement not covered" >  res.send(recommendations);</span>
+}
+&nbsp;
+async function <span class="fstat-no" title="function not covered" >getById(</span>req: Request, res: Response) {
+  const { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
+&nbsp;
+  const recommendation = <span class="cstat-no" title="statement not covered" >await recommendationService.getById(+id);</span>
+<span class="cstat-no" title="statement not covered" >  res.send(recommendation);</span>
+}
+&nbsp;
+export const recommendationController = {
   insert,
   upvote,
   downvote,
-  getRandom,
+  random,
+  getTop,
   get,
   getById,
-  getTop,
-  getScoreFilter,
-  getByScore,
 };
 &nbsp;</pre></td></tr></table></pre>
 

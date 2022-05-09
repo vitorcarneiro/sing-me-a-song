@@ -2,34 +2,29 @@
 import { jest } from "@jest/globals";
 import { recommendationRepository } from "../../src/repositories/recommendationRepository.js";
 import { recommendationService } from "../../src/services/recommendationsService";
-import { recommendationFactory } from "../factories/recomendationFactory";
+import recommendationBodyFactory from "../factories/recommendationBodyFactory";
+
+beforeEach(() => {
+  jest.clearAllMocks();
+  jest.resetAllMocks();
+});
 
 describe("Create", () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-    jest.resetAllMocks();
-  });
-
   it("should create a recommendation", async () => {
     const recommendationRepositoryCreate = jest
       .spyOn(recommendationRepository, "create")
       .mockResolvedValue(null);
 
-    await recommendationService.insert(recommendationFactory);
+    await recommendationService.insert(recommendationBodyFactory());
 
     expect(recommendationRepositoryCreate).toBeCalledTimes(1);
     expect(recommendationRepositoryCreate).toBeCalledWith(
-      recommendationFactory
+      recommendationBodyFactory()
     );
   });
 });
 
 describe("Update score", () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-    jest.resetAllMocks();
-  });
-
   it("should upvote a recommendation", async () => {
     const recommendationRepositoryUpdateScore = findUpdateScoreSpy();
 
@@ -67,7 +62,7 @@ describe("Update score", () => {
   it("should remove a recommendation when ", async () => {
     jest.spyOn(recommendationRepository, "find").mockResolvedValue({
       id: 1,
-      ...recommendationFactory,
+      ...recommendationBodyFactory(),
       score: -6,
     });
 
@@ -87,7 +82,7 @@ describe("Get by id", () => {
   it("should return found recommendation", async () => {
     jest.spyOn(recommendationRepository, "find").mockResolvedValue({
       id: 1,
-      ...recommendationFactory,
+      ...recommendationBodyFactory(),
       score: 0,
     });
 
@@ -102,12 +97,12 @@ describe("Get", () => {
     jest.spyOn(recommendationRepository, "findAll").mockResolvedValue([
       {
         id: 1,
-        ...recommendationFactory,
+        ...recommendationBodyFactory(),
         score: 0,
       },
       {
         id: 2,
-        ...recommendationFactory,
+        ...recommendationBodyFactory(),
         name: "Test 2",
         score: 5,
       },
@@ -126,18 +121,18 @@ describe("Get top", () => {
       .mockResolvedValue([
         {
           id: 1,
-          ...recommendationFactory,
+          ...recommendationBodyFactory(),
           score: 1000,
         },
         {
           id: 2,
-          ...recommendationFactory,
+          ...recommendationBodyFactory(),
           name: "Test 2",
           score: 500,
         },
         {
           id: 3,
-          ...recommendationFactory,
+          ...recommendationBodyFactory(),
           name: "Test 3",
           score: 400,
         },
@@ -165,18 +160,18 @@ describe("Get random", () => {
       .mockResolvedValue([
         {
           id: 1,
-          ...recommendationFactory,
+          ...recommendationBodyFactory(),
           score: 1000,
         },
         {
           id: 2,
-          ...recommendationFactory,
+          ...recommendationBodyFactory(),
           name: "Test 2",
           score: 500,
         },
         {
           id: 3,
-          ...recommendationFactory,
+          ...recommendationBodyFactory(),
           name: "Test 3",
           score: 400,
         },
@@ -185,18 +180,18 @@ describe("Get random", () => {
     jest.spyOn(recommendationService, "getByScore").mockResolvedValue([
       {
         id: 1,
-        ...recommendationFactory,
+        ...recommendationBodyFactory(),
         score: 1000,
       },
       {
         id: 2,
-        ...recommendationFactory,
+        ...recommendationBodyFactory(),
         name: "Test 2",
         score: 500,
       },
       {
         id: 3,
-        ...recommendationFactory,
+        ...recommendationBodyFactory(),
         name: "Test 3",
         score: 400,
       },
@@ -225,7 +220,7 @@ describe("Get random", () => {
 function findUpdateScoreSpy() {
   jest.spyOn(recommendationRepository, "find").mockResolvedValue({
     id: 1,
-    ...recommendationFactory,
+    ...recommendationBodyFactory(),
     score: 0,
   });
 
@@ -238,6 +233,5 @@ function findUpdateScoreSpy() {
 
 function findWithInvalidId() {
   jest.spyOn(recommendationRepository, "find").mockResolvedValue(null);
-
   return null;
 }
