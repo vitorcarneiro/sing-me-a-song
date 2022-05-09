@@ -151,6 +151,18 @@ describe("Get top", () => {
   });
 });
 
+describe("Get score filter", () => {
+  it("should return gt if random is less than 0.7", () => {
+    const getScoreFilter = recommendationService.getScoreFilter(0.69);
+    expect(getScoreFilter).toEqual("gt");
+  });
+
+  it("should return lte if random is higher or equal than 0.7", () => {
+    const getScoreFilter = recommendationService.getScoreFilter(0.7);
+    expect(getScoreFilter).toEqual("lte");
+  });
+});
+
 describe("Get random", () => {
   it("should return a random recommendation recommendations", async () => {
     jest.spyOn(recommendationService, "getScoreFilter").mockReturnValue("gt");
@@ -235,3 +247,7 @@ function findWithInvalidId() {
   jest.spyOn(recommendationRepository, "find").mockResolvedValue(null);
   return null;
 }
+function getScoreFilter(arg0: number): "gt" | "lte" {
+  throw new Error("Function not implemented.");
+}
+
