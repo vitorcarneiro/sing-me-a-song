@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
 import { jest } from "@jest/globals";
 import { recommendationRepository } from "../../src/repositories/recommendationRepository.js";
-import { recommendationService } from "./../../src/services/recommendationsService";
-import { recommendationFactory } from "./../factories/recomendationFactory";
+import { recommendationService } from "../../src/services/recommendationsService";
+import { recommendationFactory } from "../factories/recomendationFactory";
 
 describe("Create", () => {
   beforeEach(() => {
@@ -66,8 +66,8 @@ describe("Update score", () => {
 
   it("should remove a recommendation when ", async () => {
     jest.spyOn(recommendationRepository, "find").mockResolvedValue({
-      ...recommendationFactory,
       id: 1,
+      ...recommendationFactory,
       score: -6,
     });
 
@@ -84,18 +84,141 @@ describe("Update score", () => {
 });
 
 describe("Get by id", () => {
-  it("should return a recommendation", async () => {
+  it("should return found recommendation", async () => {
     jest.spyOn(recommendationRepository, "find").mockResolvedValue({
-      ...recommendationFactory,
       id: 1,
+      ...recommendationFactory,
       score: 0,
     });
 
-    const recommendationFindById = async () => {
-      await recommendationService.getById(1);
-    };
+    const recommendationFindById = await recommendationService.getById(1);
 
     expect(recommendationFindById).not.toBeNull();
+  });
+});
+
+describe("Get", () => {
+  it("should return 2 recommendations", async () => {
+    jest.spyOn(recommendationRepository, "findAll").mockResolvedValue([
+      {
+        id: 1,
+        ...recommendationFactory,
+        score: 0,
+      },
+      {
+        id: 2,
+        ...recommendationFactory,
+        name: "Test 2",
+        score: 5,
+      },
+    ]);
+
+    const recommendationGet = await recommendationService.get();
+
+    expect(recommendationGet.length).toEqual(2);
+  });
+});
+
+describe("Get top", () => {
+  it("should return 3 recommendations", async () => {
+    const recommendationsOrderByScore = jest
+      .spyOn(recommendationRepository, "getAmountByScore")
+      .mockResolvedValue([
+        {
+          id: 1,
+          ...recommendationFactory,
+          score: 1000,
+        },
+        {
+          id: 2,
+          ...recommendationFactory,
+          name: "Test 2",
+          score: 500,
+        },
+        {
+          id: 3,
+          ...recommendationFactory,
+          name: "Test 3",
+          score: 400,
+        },
+      ]);
+
+    const recommendationGetTop = await recommendationService.getTop(3);
+
+    expect(recommendationsOrderByScore).toHaveBeenCalled();
+
+    expect(recommendationGetTop.length).toEqual(3);
+
+    expect(
+      recommendationGetTop[0].score >= recommendationGetTop[1].score &&
+        recommendationGetTop[1].score >= recommendationGetTop[2].score
+    ).toEqual(true);
+  });
+});
+
+describe("Get random", () => {
+  it("should return a random recommendation recommendations", async () => {
+    jest.spyOn(recommendationService, "getScoreFilter").mockReturnValue("gt");
+
+    const recommendationRepositoryFindAll = jest
+      .spyOn(recommendationRepository, "findAll")
+      .mockResolvedValue([
+        {
+          id: 1,
+          ...recommendationFactory,
+          score: 1000,
+        },
+        {
+          id: 2,
+          ...recommendationFactory,
+          name: "Test 2",
+          score: 500,
+        },
+        {
+          id: 3,
+          ...recommendationFactory,
+          name: "Test 3",
+          score: 400,
+        },
+      ]);
+
+    jest.spyOn(recommendationService, "getByScore").mockResolvedValue([
+      {
+        id: 1,
+        ...recommendationFactory,
+        score: 1000,
+      },
+      {
+        id: 2,
+        ...recommendationFactory,
+        name: "Test 2",
+        score: 500,
+      },
+      {
+        id: 3,
+        ...recommendationFactory,
+        name: "Test 3",
+        score: 400,
+      },
+    ]);
+
+    const recommendationGetRandom = await recommendationService.getRandom();
+
+    expect(recommendationRepositoryFindAll).toHaveBeenCalled();
+
+    expect(typeof recommendationGetRandom).toEqual("object");
+  });
+
+  it("should return not found when has no recommendations", async () => {
+    jest.spyOn(recommendationService, "getScoreFilter").mockReturnValue("gt");
+
+    jest.spyOn(recommendationRepository, "findAll").mockResolvedValue([]);
+
+    jest.spyOn(recommendationService, "getByScore").mockResolvedValue([]);
+
+    expect(
+      async () => await recommendationService.getRandom()
+    ).rejects.toHaveProperty("type", "not_found");
   });
 });
 
