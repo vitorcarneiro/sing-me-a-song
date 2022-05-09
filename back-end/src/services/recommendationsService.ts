@@ -72,6 +72,10 @@ function getScoreFilter(random: number) {
   return "lte";
 }
 
+async function truncate() {
+  await recommendationRepository.truncate();
+}
+
 export const recommendationService = {
   insert,
   upvote,
@@ -82,4 +86,5 @@ export const recommendationService = {
   getTop,
   getScoreFilter,
   getByScore,
+  truncate,
 };
