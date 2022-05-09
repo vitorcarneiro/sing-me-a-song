@@ -2,7 +2,7 @@
 import { jest } from "@jest/globals";
 import { recommendationRepository } from "../../src/repositories/recommendationRepository.js";
 import { recommendationService } from "../../src/services/recommendationsService";
-import recommendationBodyFactory from "../factories/recommendationBodyFactory";
+import { recommendationBodyFactory } from "../factories/recommendationFactory";
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -11,16 +11,16 @@ beforeEach(() => {
 
 describe("Create", () => {
   it("should create a recommendation", async () => {
+    const body = recommendationBodyFactory();
+
     const recommendationRepositoryCreate = jest
       .spyOn(recommendationRepository, "create")
       .mockResolvedValue(null);
 
-    await recommendationService.insert(recommendationBodyFactory());
+    await recommendationService.insert(body);
 
     expect(recommendationRepositoryCreate).toBeCalledTimes(1);
-    expect(recommendationRepositoryCreate).toBeCalledWith(
-      recommendationBodyFactory()
-    );
+    expect(recommendationRepositoryCreate).toBeCalledWith(body);
   });
 });
 
