@@ -1,13 +1,14 @@
-import styled from "styled-components";
-import { VscPlayCircle } from "react-icons/vsc";
+import React from 'react'
+import styled from 'styled-components'
+import { VscPlayCircle } from 'react-icons/vsc'
 
-export default function Header() {
+export default function Header () {
   return (
     <StyledHeader>
       <VscPlayCircle size="28px" color="#e90000" />
       Sing me a Song
     </StyledHeader>
-  );
+  )
 }
 
 const StyledHeader = styled.header`
@@ -17,4 +18,4 @@ const StyledHeader = styled.header`
   font-size: 20px;
   text-transform: lowercase;
   font-weight: 400;
-`;
+`
