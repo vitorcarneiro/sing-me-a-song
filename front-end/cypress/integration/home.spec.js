@@ -23,7 +23,7 @@ function generateSongData () {
 
 const song = generateSongData()
 
-describe('Timeline Home Page', () => {
+describe('Home page test', () => {
   it('should add a recommendation', () => {
     cy.visit('http://localhost:3000/')
 
@@ -37,6 +37,15 @@ describe('Timeline Home Page', () => {
     cy.contains(song.name).should('not.be.undefined').should('be.visible')
 
     cy.end()
+  })
+
+  it('should show video on home page right', () => {
+    cy.visit('http://localhost:3000/')
+
+    cy.get('article').first().find('iframe')
+      .should('be.visible')
+      .should('not.be.undefined')
+      .end()
   })
 
   it('should upvote last recommendation', () => {
