@@ -29,7 +29,10 @@ describe('Home page test', () => {
 
     cy.get('input').first().type(song.name)
     cy.get('input').last().type(song.youtubeLink)
+    cy.intercept('POST', process.env.REACT_APP_API_BASE_URL + '/recommendations').as('createRecommendation')
     cy.get('button').click()
+    cy.wait('@createRecommendation')
+
     cy.contains(song.name).should('not.be.undefined').should('be.visible')
 
     cy.reload()
